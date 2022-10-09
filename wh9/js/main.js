@@ -85,7 +85,7 @@ document.write(`Число ${number} ділиться на: ${res10}`);
 // -Визначити кількість його парних дільників
 let number1 = +prompt('Введіть натуральне число:', '');
 let res11 = 0;
-for(let i = 0; i<=number1; i++) {
+for(let i = 1; i<=number1; i++) {
     if(!(number1%i)) {
         if(!(i%2)) {
             res11++;
@@ -98,7 +98,7 @@ document.write(`Kількість парних дільників числа ${n
 // -Знайти суму його парних дільників
 let number2 = +prompt('Введіть натуральне число:', '');
 let res12 = 0;
-for(let i = 0; i<=number2; i++) {
+for(let i = 1; i<=number2; i++) {
     if(!(number2%i)) {
         if(!(i%2)) {
             res12 += i;
