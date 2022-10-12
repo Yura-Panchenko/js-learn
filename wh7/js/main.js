@@ -19,7 +19,12 @@ let champion = "";
 if(year === 0) {
     alert("Шкода, що Ви не захотіли ввести свій вік.")
 }else {
-    old = `Твій вік: ${CURRENT_YEAR - year}`;
+    if(year<= CURRENT_YEAR) {
+        old = `Твій вік: ${CURRENT_YEAR - year}`;
+    }else{
+        old = "Ти людина?";
+    }
+
     city = prompt("В якому населенному пункті ти проживаєш?: ", "" );
     if(city === null || city === "") {
         alert(`${old}\nШкода, що Ви не захотіли ввести свoє місто.`);
