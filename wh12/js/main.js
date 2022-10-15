@@ -69,6 +69,6 @@ console.log(res);
 
 let res2 = users.reduce((tel, el) => {
     let elBal = Number(el.balance.replace('$','').replace(',',''));
-    return tel += elBal;
+    return tel + elBal;
 },0);
 console.log( Math.round(res2*100)/100);
