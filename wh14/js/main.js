@@ -4,7 +4,7 @@
 // Наприклад:
 
 const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
-const key = generateKey(5, characters);
+const key = generateKey(10, characters);
 
 function generateKey(length, characters) {
     let chArr = characters.split('');
