@@ -2,7 +2,7 @@
 let arr = [];
 let el;
 do{
-    el = prompt('Enter nuber','');
+    el = prompt('Вводьте номера масиву, або для відміни натисніть відміна','');
     if(el !== null) {
         arr.push(Number(el));
         console.log(arr);
