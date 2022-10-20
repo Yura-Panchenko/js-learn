@@ -29,84 +29,37 @@ console.log(result(arr));
 // Вивести результат математичної дії, вказаної в змінній znak.
 // Обидва числа і знак виходять від користувача.
 
-let x;
-let y;
-let znak;
+let x = +prompt('Введіть перше число','');
+let y = +prompt('Введіть друге число','');
+let znak = prompt('Введіть знак +, -, *, /, %, ^','');
 
 function doMath(x, znak, y) {
     let res = 0;
 
-    x = prompt('Введіть перше число','');
-    
-    if (x) {
-        let num1 = Number(x);
-    
-        if(Number.isNaN(num1)){
-            console.log(`Ви ввели не число, а літеру - "${x}"`);
-            return;
-        }else{
-            x = num1;
-            console.log(`Перше число - "${x}"`);
-            y = prompt('Введіть друге число','');
-    
-            if(y) {
-                let num2 = Number(y);
-    
-                if(Number.isNaN(num2)){
-                    console.log(`Ви ввели не число, а літеру - "${y}"`);
-                    return;
-                }else{
-                    y = num2;
-                    console.log(`Друге число - "${y}"`);
-                    znak = prompt('Введіть знак +, -, *, /, %, ^','');
-                    switch (znak) {
-                        case '+':
-                        case '-':
-                        case '*':
-                        case '/':
-                        case '%':
-                        case '^':
-                            znak = znak;
-                            break;
-                        default:
-                            console.log('Ви ввели недопустиму дію над числами!');
-                            return;
-                    }
-
-                    switch (znak) {
-                        case '+':
-                            res = x + y;
-                            break;
-                        case '-':
-                            res = x - y;
-                            break;
-                        case '*':
-                            res = x * y;
-                            break;
-                        case '/':
-                            if (y !== 0) {
-                                res = x / y;
-                            }else{
-                                console.log('На нуль ділити не можна!');
-                                return;
-                            }
-                            break;
-                        case '%':
-                            res = `${(x / y) * 100}%`;
-                            break;
-                        case '^':
-                            res = Math.pow(x,y);
-                            break;
-                    }
-                }
-            }else {
-                console.log('Ви не ввели друге число!');
+    switch (znak) {
+        case '+':
+            res = x + y;
+            break;
+        case '-':
+            res = x - y;
+            break;
+        case '*':
+            res = x * y;
+            break;
+        case '/':
+            if (y !== 0) {
+                res = x / y;
+            }else{
+                console.log('На нуль ділити не можна!');
                 return;
             }
-        }
-    }else {
-        console.log('Ви не ввели перше число!');
-        return;
+            break;
+        case '%':
+            res = `${(x / y) * 100}%`;
+            break;
+        case '^':
+            res = Math.pow(x,y);
+            break;
     }
     
     return `${x} ${znak} ${y} = ${res}`;
