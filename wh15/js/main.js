@@ -5,23 +5,23 @@
 // -Дан масив з елементами різних типів. 
 // Створити функцію яка вираховує середнє арифметичне лише числових елементів даного масиву.
 
-const arr = [4,6,3,'f','d','3',2,5];
+// const arr1 = [4,6,3,'f','d','3',2,5];
 
-function result(arr){
-    let i = 0;
+// function result(arr){
+//     let i = 0;
 
-    let result = arr.reduce((midle,el) => {
+//     let result = arr.reduce((midle,el) => {
 
-        if(typeof el === 'number'){
-            i++;
-            midle += el;
-        }
-        return midle;
-    },0);
+//         if(typeof el === 'number'){
+//             i++;
+//             midle += el;
+//         }
+//         return midle;
+//     },0);
 
-    return result / i;
-}
-console.log(result(arr));
+//     return result / i;
+// }
+// console.log(result(arr1));
 
 // 2
 // -Написати функцію doMath(x, znak, y), яка отримує 3 аргументи:
@@ -29,43 +29,43 @@ console.log(result(arr));
 // Вивести результат математичної дії, вказаної в змінній znak.
 // Обидва числа і знак виходять від користувача.
 
-let x = +prompt('Введіть перше число','');
-let y = +prompt('Введіть друге число','');
-let znak = prompt('Введіть знак +, -, *, /, %, ^','');
+// let x = +prompt('Введіть перше число','');
+// let y = +prompt('Введіть друге число','');
+// let znak = prompt('Введіть знак +, -, *, /, %, ^','');
 
-function doMath(x, znak, y) {
-    let res = 0;
+// function doMath(x, znak, y) {
+//     let res = 0;
 
-    switch (znak) {
-        case '+':
-            res = x + y;
-            break;
-        case '-':
-            res = x - y;
-            break;
-        case '*':
-            res = x * y;
-            break;
-        case '/':
-            if (y !== 0) {
-                res = x / y;
-            }else{
-                console.log('На нуль ділити не можна!');
-                return;
-            }
-            break;
-        case '%':
-            res = `${(x / y) * 100}%`;
-            break;
-        case '^':
-            res = Math.pow(x,y);
-            break;
-    }
+//     switch (znak) {
+//         case '+':
+//             res = x + y;
+//             break;
+//         case '-':
+//             res = x - y;
+//             break;
+//         case '*':
+//             res = x * y;
+//             break;
+//         case '/':
+//             if (y !== 0) {
+//                 res = x / y;
+//             }else{
+//                 console.log('На нуль ділити не можна!');
+//                 return;
+//             }
+//             break;
+//         case '%':
+//             res = `${(x / y) * 100}%`;
+//             break;
+//         case '^':
+//             res = Math.pow(x,y);
+//             break;
+//     }
     
-    return `${x} ${znak} ${y} = ${res}`;
-}
+//     return `${x} ${znak} ${y} = ${res}`;
+// }
 
-console.log(doMath(x, znak, y));
+// console.log(doMath(x, znak, y));
 
 // 3
 // -Написати функцію заповнення даними користувача двомірного масиву. 
@@ -74,18 +74,17 @@ console.log(doMath(x, znak, y));
 
 function arrCreate(){
     let arr = [];
-    let el2;
     let l = prompt('Яка довжина основного масиву?','');
     for (let i = 0; l; l--){
         let l2 = prompt(`Яка довжина додаткового масиву під індексом ${i++}?`,'');
         let arr2 = [];
-
+        
         for(let j = 0; l2; l2--) {
-            el2 = prompt(`Значення під індексом ${j++} = `);
+            let el2 = prompt(`Значення під індексом ${j++} = `);
             arr2.push(el2)
         }
 
-        arr.push(arr2)
+        arr.push(arr2);
     }
     console.log(arr);
 }
