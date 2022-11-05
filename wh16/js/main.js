@@ -26,3 +26,9 @@ function pow(x,y){
 }
 let res = pow(5,3);
 console.log(res);
+//////
+const elem = document.getElementById("element")
+function logNode(node) {
+    console.log(node.innerText);
+    
+}
