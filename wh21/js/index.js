@@ -8,32 +8,15 @@
 
 const input = document.querySelector('.input');
 const box = document.querySelector('.ghost');
-box.setAttribute('style', 'display:none');
+box.setAttribute('style', 'visibility: hidden');
 
 const focusInput = (e) => {
-    box.setAttribute('style', 'display:block');
+    box.setAttribute('style', 'visibility: visible');
 }
 
 const blurInput = (e) => {
-    box.setAttribute('style', 'display:none');
+    box.setAttribute('style', 'visibility: hidden');
 }
 
 input.addEventListener('focus', focusInput)
 input.addEventListener('blur', blurInput)
-
-////////////////
-
-// const input = document.querySelector('.input');
-// const box = document.querySelector('.ghost');
-// box.setAttribute('style', 'display:none');
-
-// const focusInput = (e) => {
-//     box.setAttribute('style', 'display:block');
-// }
-
-// const blurInput = (e) => {
-//     box.setAttribute('style', 'display:none');
-// }
-
-// input.addEventListener('focus', focusInput)
-// input.addEventListener('blur', blurInput)
