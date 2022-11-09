@@ -5,9 +5,9 @@
 
 const container = document.querySelector('.container');
 
-createTable(container,10,10);
+addTable(container,10,10);
 
-function createTable(container,x,y){
+function addTable(container,x,y){
     let str = '<table><tr>';
 
     for(let i = 1; i <= x*y; i++){
@@ -30,7 +30,7 @@ let element = document.querySelector('.container');
 
 //createTable(element,10,10)
 
-function createTable(parent,x,y){
+function addTable(parent,x,y){
     let table = document.createElement('table');
     let k = 1;
 
