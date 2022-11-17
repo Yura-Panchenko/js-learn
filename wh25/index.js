@@ -41,6 +41,5 @@ const elementTarget = (event) => {
     return;
   }
 }
-
 reactionElements.forEach((elem) => container.appendChild(elem));
 container.addEventListener('click', elementTarget);
