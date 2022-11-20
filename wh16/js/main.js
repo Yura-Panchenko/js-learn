@@ -11,4 +11,3 @@ function pow(num,degree) {
 }
 
 console.log('pow = ',pow(5,3));
-
