@@ -5,7 +5,7 @@
 // -Дан масив з елементами різних типів. 
 // Створити функцію яка вираховує середнє арифметичне лише числових елементів даного масиву.
 
-const arr = [4,6,3,'f','d','3',2,5];
+const arr1 = [4,6,3,'f','d','3',2,5];
 
 function result(arr){
     let i = 0;
@@ -21,7 +21,7 @@ function result(arr){
 
     return result / i;
 }
-console.log(result(arr));
+console.log(result(arr1));
 
 // 2
 // -Написати функцію doMath(x, znak, y), яка отримує 3 аргументи:
@@ -74,18 +74,15 @@ console.log(doMath(x, znak, y));
 
 function arrCreate(){
     let arr = [];
-    let el2;
-    let l = prompt('Яка довжина основного масиву?','');
-    for (let i = 0; l; l--){
-        let l2 = prompt(`Яка довжина додаткового масиву під індексом ${i++}?`,'');
+    for (let i = 0, l = prompt('Яка довжина основного масиву?',''); l; l--){
         let arr2 = [];
-
-        for(let j = 0; l2; l2--) {
-            el2 = prompt(`Значення під індексом ${j++} = `);
+        
+        for(let j = 0, l2 = prompt(`Яка довжина додаткового масиву під індексом ${i++}?`,''); l2; l2--) {
+            let el2 = prompt(`Значення під індексом ${j++} = `);
             arr2.push(el2)
         }
 
-        arr.push(arr2)
+        arr.push(arr2);
     }
     console.log(arr);
 }
