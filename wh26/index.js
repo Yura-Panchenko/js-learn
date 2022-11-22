@@ -157,7 +157,6 @@ message.innerHTML = '';
 button.setAttribute('default', true);
 
 // create list categorie item
-console.log(categories)
 const categoryAll = categories.forEach(el => {
   const item = document.createElement('li');
   item.setAttribute(`data-category-id`, el.id);
@@ -166,10 +165,9 @@ const categoryAll = categories.forEach(el => {
   categoriesWr.append(item);
 })
 
-
 function filterCategory(event) {
   productsWr.innerHTML = '';
-  const catId = +event.target.getAttribute('data-category-id');
+  const catId = Number(event.target.getAttribute('data-category-id'));
   products.forEach(el => {
     if(el.category_id === catId){
       const result = document.createElement('li');
@@ -184,7 +182,7 @@ function filterCategory(event) {
 }
 
 function infoProduct(event){
-  const productId = +event.target.getAttribute('data-product-id');
+  const productId = Number(event.target.getAttribute('data-product-id'));
   products.forEach(el => {
     if(productId === el.id){
       description.textContent = el.description;
