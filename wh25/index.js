@@ -17,12 +17,10 @@ const reactionElements = reactions.map((reaction) => {
   wrapper.classList.add('wrap-reaction');
 
   const button = document.createElement("button");
-  button.classList.add('button');
   button.innerText = reaction;
 
   const counter = document.createElement("div");
-  counter.classList.add("counter");
-
+  
   counter.innerText = 0;
   wrapper.append(button, counter);
 
@@ -30,16 +28,11 @@ const reactionElements = reactions.map((reaction) => {
 });
 
 const elementTarget = (event) => {
-  const target = event.target.closest('.wrap-reaction');
-  
-  let textCounter = target.getElementsByClassName('counter');
-  let text = textCounter[0].textContent;
-  
-  textCounter[0].textContent = ++text;
-  
-  if(!target){
-    return;
+
+  if(event.target.tagName === 'BUTTON'){
+    event.target.nextSibling.innerHTML++;
   }
 }
+
 reactionElements.forEach((elem) => container.appendChild(elem));
 container.addEventListener('click', elementTarget);
