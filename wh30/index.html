@@ -15,11 +15,11 @@
                 <form id="register" action="#" class="p-3 bg-light border border-primary rounded-3">
                     <div class="mb-3">
                         <label for="name" class="form-label">Ім'я, Прізвище</label>
-                        <input id="name" type="text" class="form-control">
+                        <input id="name" type="text" class="form-control" name="name" value="" >
                     </div>
                     <div class="mb-3">
                         <label for="data" class="form-label">Дата народження</label>
-                        <input id="data" type="text" class="form-control">
+                        <input id="data" type="text" class="form-control" name="data" >
                     </div>
                     <div class="form-check mb-3">
                         <input class="form-check-input" id="women" type="radio" name="sex" value="Жінка">
@@ -33,15 +33,15 @@
                             Чоловік
                         </label>
                     </div>
-                    <select class="form-select mb-3" aria-label="Default select example">
+                    <select id="city" class="form-select mb-3" aria-label="Default select example" name="city">
                         <option selected>Місто</option>
-                        <option value="харкі">Харків</option>
+                        <option value="харків">Харків</option>
                         <option value="київ">Київ</option>
                         <option value="одеса">Одеса</option>
                     </select>
-                    <div class="form-floating mb-3">
-                        <label for="address">Адреса</label>
-                        <textarea id="address" class="form-control"></textarea>
+                    <div class="mb-3">
+                        <label for="address" class="mb-2">Адреса</label>
+                        <textarea id="address" class="form-control" name="address"></textarea>
                     </div>
                     <div class="form-check mb-3">
                         <input class="form-check-input" id="uk" type="checkbox" value="Українська" name="lang" checked>
@@ -63,8 +63,8 @@
                     </div>
                     <button id="save" class="btn btn-primary" type="button">Зберегти</button>
                 </form>
-                <div  class="d-none bg-light border border-primary rounded-3">
-                    <table id="info" class="table">
+                <div id="info" class="d-none bg-light border border-primary rounded-3">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>Ім'я, Прізвище</th>
@@ -74,10 +74,10 @@
                                 <th>Адреса</th>
                                 <th>Мови</th>
                             </tr>
-                            <tbody>
-
-                            </tbody>
                         </thead>
+                        <tbody>
+                            <tr></tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
