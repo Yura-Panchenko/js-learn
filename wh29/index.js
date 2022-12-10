@@ -254,20 +254,19 @@ function selectValidation(event){
   const text = document.querySelector('#description p');
   const price = document.querySelector('#description strong');
   const nameId = document.querySelector('#nameId');
+  const composition = document.querySelector('#composition');
   const city = document.querySelector('.form-select');
 
-  inputs.forEach((el)=>{
-    let val = el.value.trim()
-    if(el.value !== '' && val !== '') {
-      el.classList.remove('border-danger');
-      el.classList.add('border-success');
-    } else {
-      el.classList.remove('border-success');
-      el.classList.add('border-danger');
-      return false;
-    }
-  })
-  
+  let nameIdVal = nameId.value.trim();
+  if(nameIdVal !== ''){
+    nameId.classList.remove('border-danger');
+    nameId.classList.add('border-success');
+  } else {
+    nameId.classList.remove('border-success');
+    nameId.classList.add('border-danger');
+    return false;
+  }
+
   if(city.selectedIndex) {
     city.classList.remove('border-danger');
     city.classList.add('border-success');
@@ -277,9 +276,17 @@ function selectValidation(event){
     return false;
   }
 
+  if(Number(composition.value) > 0){
+    composition.classList.remove('border-danger');
+    composition.classList.add('border-success');
+  } else {
+    composition.classList.remove('border-success');
+    composition.classList.add('border-danger');
+    return false;
+  }
+ 
   let validPayment = false;
   let paymentValue;
-
   for(el of payment) {
     if(el.checked){
       validPayment = true;
@@ -294,15 +301,28 @@ function selectValidation(event){
     paymentError.classList.remove('d-none');
   }
 
+  if(Number(count.value) >= 0 && count.value != ''){
+    count.classList.remove('border-danger');
+    count.classList.add('border-success');
+  } else {
+    count.classList.remove('border-success');
+    count.classList.add('border-danger');
+    return false;
+  }
+
+  form.classList.add('d-none');
+
   obj.title = title.textContent;
-  obj.text = text.textContent;
-  obj.price = price.textContent * Number(count.value);
+  obj.description = text.textContent;
+  obj.price = `${price.textContent * Number(count.value)}$`;
   obj.name = nameId.value;
   obj.city = city.value;
   obj.payment = paymentValue;
   obj.count = count.value;
   
   total.innerHTML = `<pre>${JSON.stringify(obj)}<pre>`;
+  console.table(obj)
+
 }
 
 categoriesWr.addEventListener('click', filterCategory);
