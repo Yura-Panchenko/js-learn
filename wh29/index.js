@@ -322,7 +322,6 @@ function selectValidation(event){
   
   total.innerHTML = `<pre>${JSON.stringify(obj)}<pre>`;
   console.table(obj)
-
 }
 
 categoriesWr.addEventListener('click', filterCategory);
