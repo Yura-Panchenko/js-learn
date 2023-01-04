@@ -1,0 +1,9 @@
+.container {
+    
+}
+
+.wrap_reaction {
+    display: flex;
+    justify-content: center;
+    gap:10px;
+}
