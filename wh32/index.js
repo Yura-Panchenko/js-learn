@@ -1,72 +1,102 @@
-// Використовуючи API https://jsonplaceholder.typicode.com/ зробити пошук поста за ід.
+// Використовуючи API 
+//  зробити пошук поста за ід.
 // Ід має бути введений в інпут (валідація: ід від 1 до 100) Якщо знайдено пост, то 
 // вивести на сторінку блок з постом і зробити кнопку для отримання комкоментарів до посту.
 // Зробити завдання використовуючи проміси, перехопити помилки.
 
-const postNumber = document.getElementById('search');
-const button     = document.querySelector('[type="submit"]');
-const postWrap   = document.getElementById('post-wrap');
-const postHold   = document.getElementById('post-hold');
-const form       = document.querySelector('form');
-const textarea   = document.getElementById('textarea');
-const send       = document.getElementById('send');
+const postNumber      = document.getElementById('search');
+const button          = document.querySelector('[type="submit"]');
+const postWrap        = document.getElementById('post-wrap');
+const postHold        = document.getElementById('post-hold');
+const form            = document.querySelector('form');
+const textarea        = document.getElementById('textarea');
+const send            = document.getElementById('send');
+const commentsWrap    = document.getElementById('comments-wrap');
+const getCommentsPost = document.getElementById('get-comment');
+const url             = 'https://jsonplaceholder.typicode.com/posts';
 
-const getPost = (url) => 
-  new Promise((resolve, reject) => 
-    fetch(url)
-      .then(response => response.json())
-      .then(json => resolve(json))
-      .catch(error => reject(error))
-  )
-  
-function validateInput(event) {
+function validate(event) {
   event.preventDefault();
-
-  const value = postNumber.value;
+  postWrap.innerHTML = '';
+  const value = Number(postNumber.value);
 
   if (value>0 && value<=100) {
     postNumber.classList.add('bg-success');
     postNumber.classList.remove('bg-danger');
+    fetchPosts(value);
   }else{
     postNumber.classList.add('bg-danger');
     postNumber.classList.remove('bg-success');
     return false;
   }
-
-  getPost(`https://jsonplaceholder.typicode.com/posts/${Number(value)}`)
-    .then(post => {
-      console.log(post)
-      postWrap.setAttribute('id', post.id);
-      postWrap.classList.remove('d-none');
-      const title = document.createElement('h2');
-      const p     = document.createElement('p');
-
-      title.textContent = post.title;
-      p.textContent = post.body;
-
-      postHold.append(title);
-      postHold.append(p);
-
-      form.classList.add('d-none');
-
-      return postHold;
-    })
-    .catch(error => console.error('error = ', error))
 }
 
-function addMessage(event) {
-  event.preventDefault();
-  const p = document.createElement('p')
-  if(textarea.value) {
-    textarea.classList.remove('bg-danger');
-  }else{
-    textarea.classList.add('bg-danger');
-    return false;
+async function fetchPosts(numberPost){
+  try {
+    const response = await fetch(url)
+    const data     = await response.json()
+    postWrap.classList.remove('d-none')
+    data.forEach((el) => {
+      if(Number(numberPost) === el.id){
+        const id                = document.createElement('i');
+        const title             = document.createElement('h2');
+        const body              = document.createElement('p');
+        const buttonGetComments = document.createElement('button');
+        
+        id.textContent    = `Post ID: ${el.id}`;
+        title.textContent = el.title;
+        body.textContent  = el.body;
+        buttonGetComments.classList.add('btn', 'btn-primary');
+        buttonGetComments.textContent = 'Get Comments';
+        
+        postWrap.append(id);
+        postWrap.append(title);
+        postWrap.append(body);
+        postWrap.append(buttonGetComments);
+
+        buttonGetComments.addEventListener('click', ()=>{
+          const urlPost = `https://jsonplaceholder.typicode.com/posts/${numberPost}/comments`;
+          async function commentsPost() {
+            try {
+              const responsePost = await fetch(urlPost)
+              const dataPost     = await responsePost.json(); 
+              const commentsWrap = document.createElement('div');
+              commentsWrap.classList.add('mt-3', 'p-3', 'bg-primary', 'bg-opacity-10', 'text-dark', 'rounded-3');
+
+              dataPost.forEach((el)=> {
+                const itemMessage = document.createElement('div');
+                itemMessage.classList.add('my-3','p-2', 'bg-primary', 'bg-opacity-40', 'text-dark', 'rounded-3');
+                const idMessage = document.createElement('i');
+                idMessage.textContent = `Message Id:${el.id}`;
+                const nameMessage = document.createElement('h3');
+                nameMessage.textContent = el.name;
+                const bodyMessage = document.createElement('p');
+                bodyMessage.textContent = el.body;
+                const email = document.createElement('a');
+                email.classList.add('text-white');
+                email.setAttribute('href',`mailto:${el.email}`);
+                email.textContent = el.email;
+
+                itemMessage.append(idMessage);
+                itemMessage.append(nameMessage);
+                itemMessage.append(email);
+                itemMessage.append(bodyMessage);
+
+                commentsWrap.append(itemMessage);
+              })
+              postWrap.append(commentsWrap)
+
+            }catch (error) {
+              console.error(error);
+            }
+          }
+          commentsPost();
+        })
+      }
+    });
+  } catch (error) {
+    console.error(error);
   }
-  p.textContent = textarea.value;
-  postHold.append(p);
-  textarea.value = '';
 }
 
-button.addEventListener('click', validateInput);
-send.addEventListener('click', addMessage);
+button.addEventListener('click', validate);

@@ -20,10 +20,20 @@
                     <button type="submit" class="btn btn-primary w-100">Почати пошук</button>
                 </div>
             </form>
-            <div id="post-wrap" class="d-none border border-primary p-3 rounded-3">
+            <div id="post-wrap" class="d-none border border-primary my-3 p-3 rounded-3">
                 <div id="post-hold"></div>
-                <textarea name="textarea" id="textarea" class="form-control w-100 bg-opacity-10 text-dark" rows="4"></textarea>
-                <button id="send" type="button" class="btn btn-primary mt-3 w-100">Залишити коментар</button>
+                <div id="comments-wrap" class="d-none border border-primary p-3 rounded-3">
+                    <div class="old-comment d-flex mb-3 border border-primary p-3 rounded-3">
+                        <div class="avatar me-3" >
+                            <img src="" alt="" class="border border-info rounded-circle" width="60" height="60">
+                        </div>
+                        <div class="content-comment border border-info rounded-3 rounded-end rounded-bottom p-3">
+
+                        </div>
+                    </div>
+                </div>
+                <textarea name="textarea" id="textarea" class="d-none form-control w-100 bg-opacity-10 text-dark" rows="4"></textarea>
+                <button id="send" type="button" class="d-none btn btn-primary mt-3 w-100">Залишити коментар</button>
             </div>
         </div>
     </div>
